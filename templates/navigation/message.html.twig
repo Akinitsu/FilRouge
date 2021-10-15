@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Message{% endblock %}
+
+{% block body %}
+    <h1>Nouveau message</h1>
+
+    {{ form_start(formMessage) }}
+        {{ form_row(formMessage.title ,{'label': 'De' }) }}
+        {{ form_row(formMessage.content ,{'label': ' Contenu' }) }}
+        <button type="submit" class="btn btn-dark mt-2">  Envoyer</button>
+    {{ form_end(formMessage) }}
+{% endblock %}

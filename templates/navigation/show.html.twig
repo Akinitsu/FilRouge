@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Message!{% endblock %}
+
+{% block body %}
+    <article>
+        <h2 class="text-center">{{ messages.title}}</h2>
+        <div class="metadata text-center">Le {{ messages.createdAt |date('d/m/Y') }} à {{ messages.createdAt | date('H:i') }}</div>
+        <div class="content text-center"><hr>
+            <h6>{{ messages.content }}</h6>
+        </div>
+        <form class="text-center" method="post" action="{{ path('message_delete', {'id': messages.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ messages.id) }}">
+            <button class="btn btn-danger ">Supprimer</button>
+        </form>
+        {# <form class="text-center" method="post" action="{{ path('edit_message', {'id': messages.id}) }}">
+            <input type="hidden" name="_method" value="DELETE">
+            <button class="btn btn-danger">Modifier</button>
+        </form>
+         #}
+
+    </article>
+
+{% endblock %}
